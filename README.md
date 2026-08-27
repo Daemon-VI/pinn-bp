@@ -47,7 +47,7 @@ The robustness experiment is built to detect exactly that difference — see
 ```bash
 uv sync --extra dev            # torch CPU, scipy, sklearn — no CUDA needed
 uv run pinnbp info             # environment + dataset availability
-uv run pytest -q               # 54 tests
+uv run pytest -q               # 73 tests
 
 uv run pinnbp experiment --config configs/quick.yaml --tag smoke   # ~3 min, meaningless numbers
 uv run pinnbp experiment --config configs/experiment.yaml          # the real run, ~30 min
