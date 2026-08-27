@@ -36,7 +36,7 @@ from .config import Config, save_config
 from .data.build import build_dataset, training_mean
 from .data.datasets import BPWindows, collate
 from .metrics import regression_report
-from .models.baselines import DataDrivenCNN, MeanPredictor, RidgeBaseline
+from .models.baselines import DataDrivenCNN, RidgeBaseline
 from .models.pinn import PINNBP
 from .physics.losses import (
     huber,

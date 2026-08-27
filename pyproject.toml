@@ -50,6 +50,10 @@ target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
+# E501 is off because `ruff format` already wraps everything it can. What is left are long
+# prose lines in docstrings and long URLs in the dataset sources, and breaking those makes
+# them harder to read, not easier.
+ignore = ["E501"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

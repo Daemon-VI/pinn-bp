@@ -428,9 +428,9 @@ def generate_cohort(cfg: CohortConfig) -> dict:
         ``subject`` ``(N,)``, ``params`` ``(N, 5)`` in order (R, C, SV, HR, Tsys),
         ``sqi`` ``(N,)``, plus ``feature_names`` and the config used.
     """
-    from .artifacts import apply_artifacts
     from ..dsp.preprocess import bandpass, normalize_window, sliding_windows
     from ..dsp.sqi import signal_quality
+    from .artifacts import apply_artifacts
 
     rng = np.random.default_rng(cfg.seed)
     # Artifacts draw from their own independent stream. This is not tidiness -- it is what

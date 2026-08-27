@@ -14,7 +14,6 @@ from pinnbp.data.artifacts import ARTIFACT_KINDS, DEFAULT_ARTIFACT_KINDS, apply_
 from pinnbp.data.datasets import subject_split
 from pinnbp.data.synthetic import CohortConfig, generate_cohort, sample_subject, simulate_subject
 
-
 # --------------------------------------------------------------------------- splits
 
 
