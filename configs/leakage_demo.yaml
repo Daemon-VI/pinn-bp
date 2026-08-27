@@ -1,0 +1,55 @@
+# Deliberate subject leakage, for measuring how much a random split inflates results.
+#
+# Windows are split at random, so the same subject appears in train and test. The MAE
+# this produces is NOT a result -- it is the size of the error that a large part of the
+# cuffless-BP literature reports by making exactly this mistake. Reported in
+# docs/RESULTS.md as a leakage figure, clearly labelled.
+name: leakage-demo
+model_kind: pinn
+out_dir: reports
+
+data:
+  dataset: synthetic
+  n_subjects: 200
+  duration_s: 60.0
+  fs: 125.0
+  window_s: 8.0
+  stride_s: 4.0
+  hypertensive_fraction: 0.35
+  # Train with mild corruption present. Training entirely on clean signals produces a model
+  # that collapses the moment the wrist moves; this is the cheapest form of robustness and
+  # the baselines get exactly the same treatment, so the comparison stays fair.
+  train_artifact_severity: 0.25
+  train_artifact_prob: 0.5
+  split: random
+  ratios: [0.6, 0.2, 0.2]
+  seed: 0
+  cache_dir: data/cache
+
+model:
+  widths: [32, 48, 64, 96]
+  latent_dim: 128
+  n_harmonics: 8
+  field_hidden: 128
+  basis: harmonic
+  n_dense: 128
+  dropout: 0.10
+
+train:
+  epochs: 60
+  batch_size: 64
+  lr: 0.002
+  weight_decay: 0.0001
+  grad_clip: 1.0
+  warmup_epochs: 5
+  n_collocation: 64
+  patience: 15
+  seed: 0
+  num_workers: 0
+  w_data: 1.0
+  w_ode: 0.10
+  w_periodicity: 0.05
+  w_tau: 0.05
+  w_map: 0.02
+  w_prior: 0.10
+  physics_warmup_epochs: 10

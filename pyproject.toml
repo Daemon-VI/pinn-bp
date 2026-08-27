@@ -1,0 +1,56 @@
+[project]
+name = "pinnbp"
+version = "0.1.0"
+description = "Physics-Informed Neural Networks for robust cuffless blood pressure estimation from wearable PPG"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = { text = "MIT" }
+authors = [{ name = "Rithik Krishna" }]
+
+# Kept deliberately small. Every dependency here is load-bearing on a machine with ~1 GB
+# free RAM: torch is CPU-only (see docs/ARCHITECTURE.md "Hardware envelope"), and nothing
+# in this list pulls a CUDA runtime. Do not add a GPU package to make an import work.
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",       # butterworth filtering, peak detection, ODE reference solver
+    "torch>=2.4",        # CPU wheel, pinned to the cpu index below
+    "scikit-learn>=1.4", # ridge baseline, grouped splits, metrics
+    "matplotlib>=3.8",   # figures written to reports/
+    "pandas>=2.2",       # results tables
+    "pyyaml>=6.0",       # configs/
+    "rich>=13.7",        # progress that survives a 20-minute CPU training run
+]
+
+[project.scripts]
+pinnbp = "pinnbp.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+# torch from PyPI on Windows would still resolve a CPU build, but pinning the index makes
+# the intent explicit and keeps the wheel small on a metered connection.
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pinnbp"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
