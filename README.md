@@ -4,8 +4,6 @@ Estimating systolic and diastolic blood pressure from a wearable photoplethysmog
 network that predicts a **pressure waveform** constrained by the Windkessel model of arterial
 haemodynamics, rather than regressing two numbers directly.
 
-Project Stage-I (CD753PC), Department of Emerging Technologies, B.Tech CSE (Data Science).
-
 ---
 
 ## The idea in one picture
