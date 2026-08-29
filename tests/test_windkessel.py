@@ -3,6 +3,8 @@
 These are the tests that matter most in the project. Everything downstream -- the losses,
 the parameter recovery claim, the interpretability claim -- assumes this solver computes
 real cardiovascular physics. So it is checked against closed-form results and against an
+
+
 independent SciPy integration, not merely for "runs without error".
 """
 
