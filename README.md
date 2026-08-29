@@ -39,6 +39,7 @@ volume–pressure curve, and pulse *timing*, through pulse wave velocity and the
 Motion artifact destroys amplitude first. A model that only learned amplitude collapses; a
 model that has learned the physical relationship between the two can fall back on timing.
 
+
 The robustness experiment is built to detect exactly that difference — see
 [`docs/RESULTS.md`](docs/RESULTS.md).
 
