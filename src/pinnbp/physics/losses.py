@@ -6,6 +6,8 @@ parameters* (R, C, SV, Tsys), and these losses force the two to agree with the W
 ODE that relates them. SBP and DBP are then read off the field rather than regressed
 directly.
 
+
+
 The terms, and why each one earns its place:
 
 ``ode_residual``
