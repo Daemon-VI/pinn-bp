@@ -3,6 +3,8 @@
 The tau test is the one that matters beyond correctness: it feeds a physics loss, so a
 silently wrong tau would not crash anything -- it would teach the network a wrong compliance
 and quietly degrade the parameter-recovery result the project reports as evidence.
+
+
 """
 
 from __future__ import annotations
