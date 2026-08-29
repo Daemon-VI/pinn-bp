@@ -9,6 +9,8 @@ authors = [{ name = "Rithik Krishna" }]
 
 # Kept deliberately small. Every dependency here is load-bearing on a machine with ~1 GB
 # free RAM: torch is CPU-only (see docs/ARCHITECTURE.md "Hardware envelope"), and nothing
+
+
 # in this list pulls a CUDA runtime. Do not add a GPU package to make an import work.
 dependencies = [
     "numpy>=1.26",
