@@ -34,6 +34,7 @@ comes with a waveform and a set of cardiovascular parameters behind it.
 
 ## Why physics should help
 
+
 Compliance reaches the PPG by **two** routes: pulse *amplitude*, through the nonlinear
 volume–pressure curve, and pulse *timing*, through pulse wave velocity and the reflected wave.
 Motion artifact destroys amplitude first. A model that only learned amplitude collapses; a
