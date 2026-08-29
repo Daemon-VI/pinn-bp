@@ -1,6 +1,5 @@
 # PINN-BP — Physics-Informed Neural Networks for Cuffless Blood Pressure Estimation from PPG
 
-
 Estimating systolic and diastolic blood pressure from a wearable photoplethysmogram, using a
 network that predicts a **pressure waveform** constrained by the Windkessel model of arterial
 haemodynamics, rather than regressing two numbers directly.
